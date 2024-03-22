@@ -1,0 +1,4 @@
+You can make a dump of the db by entering:
+pg_dump -cC --inserts -U allie universe > universe.sql in a bash terminal. It will save the commands to rebuild your database in universe.sql.
+You can rebuild the db by entering:
+psql -U postgres < universe.sql in a terminal where the .sql file is.
