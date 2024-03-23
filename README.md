@@ -38,7 +38,7 @@ Be sure to connect to your database with \c universe. Then, you should add table
 
 + [x] Each table should have at least three columns
 
-+ [ ] The galaxy(4), star(4), planet(6), and moon(4) tables should each have at least five columns
++ [ ] The galaxy(4), star(4), planet(6), and moon(5) tables should each have at least five columns
 
 + [x] At least two columns per table should not accept NULL values
 
