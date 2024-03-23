@@ -1,3 +1,7 @@
+# Celestial Bodies Database
+
+For this project, you will build a database of celestial bodies using PostgreSQL.
+
 ## Universe Database
 
 You should create a database named universe.
@@ -49,3 +53,14 @@ Be sure to connect to your database with \c universe. Then, you should add table
 + [x] Each primary key column should follow the naming convention table_name_id. For example, the moon table should have a primary key column named moon_id
 
 + [x] Each foreign key column should have the same name as the column it is referencing
+
+
+
+## Sources
+https://theplanets.org/
+
+https://en.wikipedia.org/
+
+https://www.universetoday.com/
+
+https://science.nasa.gov/solar-system/
