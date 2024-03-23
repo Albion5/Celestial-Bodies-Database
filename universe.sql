@@ -44,6 +44,42 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: black_hole; Type: TABLE; Schema: public; Owner: allie
+--
+
+CREATE TABLE public.black_hole (
+    black_hole_id integer NOT NULL,
+    name character varying(30),
+    galaxy_id integer,
+    type character varying(30)
+);
+
+
+ALTER TABLE public.black_hole OWNER TO allie;
+
+--
+-- Name: black_hole_black_hole_id_seq; Type: SEQUENCE; Schema: public; Owner: allie
+--
+
+CREATE SEQUENCE public.black_hole_black_hole_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.black_hole_black_hole_id_seq OWNER TO allie;
+
+--
+-- Name: black_hole_black_hole_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: allie
+--
+
+ALTER SEQUENCE public.black_hole_black_hole_id_seq OWNED BY public.black_hole.black_hole_id;
+
+
+--
 -- Name: galaxy; Type: TABLE; Schema: public; Owner: allie
 --
 
@@ -189,6 +225,13 @@ ALTER SEQUENCE public.star_star_id_seq OWNED BY public.star.star_id;
 
 
 --
+-- Name: black_hole black_hole_id; Type: DEFAULT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.black_hole ALTER COLUMN black_hole_id SET DEFAULT nextval('public.black_hole_black_hole_id_seq'::regclass);
+
+
+--
 -- Name: galaxy galaxy_id; Type: DEFAULT; Schema: public; Owner: allie
 --
 
@@ -214,6 +257,16 @@ ALTER TABLE ONLY public.planet ALTER COLUMN planet_id SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.star_star_id_seq'::regclass);
+
+
+--
+-- Data for Name: black_hole; Type: TABLE DATA; Schema: public; Owner: allie
+--
+
+INSERT INTO public.black_hole VALUES (1, 'Sagittarius A*', 1, 'Supermassive');
+INSERT INTO public.black_hole VALUES (2, 'M31', 3, 'Supermassive');
+INSERT INTO public.black_hole VALUES (3, 'Messier 104', 7, 'Supermassive');
+INSERT INTO public.black_hole VALUES (4, 'Messier 33', 5, 'Intermediate-mass');
 
 
 --
@@ -287,6 +340,13 @@ INSERT INTO public.star VALUES (6, 'SMC-1', 5000000, 11);
 
 
 --
+-- Name: black_hole_black_hole_id_seq; Type: SEQUENCE SET; Schema: public; Owner: allie
+--
+
+SELECT pg_catalog.setval('public.black_hole_black_hole_id_seq', 4, true);
+
+
+--
 -- Name: galaxy_galaxy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: allie
 --
 
@@ -312,6 +372,14 @@ SELECT pg_catalog.setval('public.planet_planet_id_seq', 13, true);
 --
 
 SELECT pg_catalog.setval('public.star_star_id_seq', 6, true);
+
+
+--
+-- Name: black_hole black_hole_pkey; Type: CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.black_hole
+    ADD CONSTRAINT black_hole_pkey PRIMARY KEY (black_hole_id);
 
 
 --
@@ -344,6 +412,14 @@ ALTER TABLE ONLY public.planet
 
 ALTER TABLE ONLY public.star
     ADD CONSTRAINT star_pkey PRIMARY KEY (star_id);
+
+
+--
+-- Name: black_hole black_hole_galaxy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.black_hole
+    ADD CONSTRAINT black_hole_galaxy_id_fkey FOREIGN KEY (galaxy_id) REFERENCES public.galaxy(galaxy_id);
 
 
 --
