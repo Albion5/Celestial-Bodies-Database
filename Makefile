@@ -1,14 +1,13 @@
 PSQL_USER := allie
-PSQL_SUPERUSER := postgres
 DB_NAME := universe
-FILE_NAME := $(DB_NAME).sql
+SCHEMA := $(DB_NAME).sql
 
 connect:
 	psql --dbname=$(DB_NAME)
 
 dump:
-	pg_dump -cC --inserts -U $(PSQL_USER) $(DB_NAME) > $(FILE_NAME)
+	pg_dump -cC --inserts -U $(PSQL_USER) $(DB_NAME) > $(SCHEMA)
 
 rebuild:
-	psql -U $(PSQL_SUPERUSER) < $(FILE_NAME)
+	psql -U $(PSQL_USER) -d postgres -f $(SCHEMA)
 
