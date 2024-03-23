@@ -6,46 +6,46 @@ Be sure to connect to your database with \c universe. Then, you should add table
 
 ## Complete the tasks below
 
-+ Each table should have a primary key
++ [x] Each table should have a primary key
 
-+ Each primary key should automatically increment
++ [x] Each primary key should automatically increment
 
-+ Each table should have a name column
++ [x] Each table should have a name column
 
-+ You should use the INT data type for at least two columns that are not a primary or foreign key
++ [x] You should use the INT data type for at least two columns that are not a primary or foreign key
 
-+ You should use the NUMERIC data type at least once
++ [x] You should use the NUMERIC data type at least once
 
-+ You should use the TEXT data type at least once
++ [x] You should use the TEXT data type at least once
 
-+ You should use the BOOLEAN data type on at least two columns
++ [ ] You should use the BOOLEAN data type on at least two columns
 
-+ Each "star" should have a foreign key that references one of the rows in galaxy
++ [x] Each "star" should have a foreign key that references one of the rows in galaxy
 
-+ Each "planet" should have a foreign key that references one of the rows in star
++ [x] Each "planet" should have a foreign key that references one of the rows in star
 
-+ Each "moon" should have a foreign key that references one of the rows in planet
++ [x] Each "moon" should have a foreign key that references one of the rows in planet
 
-+ Your database should have at least five tables
++ [x] Your database should have at least five tables
 
-+ Each table should have at least three rows
++ [x] Each table should have at least three rows
 
-+ The galaxy and star tables should each have at least six rows
++ [x] The galaxy and star tables should each have at least six rows
 
-+ The planet table should have at least 12 rows
++ [x] The planet table should have at least 12 rows
 
-+ The moon table should have at least 20 rows
++ [ ] The moon table should have at least 20 rows
 
-+ Each table should have at least three columns
++ [x] Each table should have at least three columns
 
-+ The galaxy, star, planet, and moon tables should each have at least five columns
++ [ ] The galaxy, star, planet, and moon tables should each have at least five columns
 
-+ At least two columns per table should not accept NULL values
++ [ ] At least two columns per table should not accept NULL values
 
-+ At least one column from each table should be required to be UNIQUE
++ [ ] At least one column from each table should be required to be UNIQUE
 
-+ All columns named name should be of type VARCHAR
++ [x] All columns named name should be of type VARCHAR
 
-+ Each primary key column should follow the naming convention table_name_id. For example, the moon table should have a primary key column named moon_id
++ [x] Each primary key column should follow the naming convention table_name_id. For example, the moon table should have a primary key column named moon_id
 
-+ Each foreign key column should have the same name as the column it is referencing
++ [x] Each foreign key column should have the same name as the column it is referencing
