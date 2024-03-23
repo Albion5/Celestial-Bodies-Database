@@ -93,7 +93,7 @@ ALTER SEQUENCE public.black_hole_black_hole_id_seq OWNED BY public.black_hole.bl
 --
 
 CREATE TABLE public.galaxy (
-    galaxy_id integer NOT NULL, name character varying(40) NOT NULL, shape character varying(30), is_visible boolean
+    galaxy_id integer NOT NULL, name character varying(40) NOT NULL, shape character varying(30), is_visible boolean, distance_in_ly numeric(16, 0)
 );
 
 ALTER TABLE public.galaxy OWNER TO allie;
@@ -253,57 +253,85 @@ VALUES (
 INSERT INTO
     public.galaxy
 VALUES (
-        1, 'Milky Way', 'Barred spiral', true
+        1, 'Milky Way', 'Barred spiral', true, 0
     );
 
 INSERT INTO
     public.galaxy
 VALUES (
-        2, 'Messier 109', 'Barred Spiral', false
-    );
-
-INSERT INTO public.galaxy VALUES ( 3, 'Andromeda', 'Spiral', true );
-
-INSERT INTO public.galaxy VALUES ( 4, 'Pinwheel', 'Spiral', false );
-
-INSERT INTO public.galaxy VALUES ( 5, 'Triangulum', 'Spiral', true );
-
-INSERT INTO public.galaxy VALUES ( 6, 'Sunflower', 'Spiral', false );
-
-INSERT INTO public.galaxy VALUES ( 7, 'Sombrero', 'Spiral', false );
-
-INSERT INTO public.galaxy VALUES ( 8, 'IC 1101', 'Elliptical', false );
-
-INSERT INTO
-    public.galaxy
-VALUES (
-        9, 'Messier 59', 'Elliptical', false
+        2, 'Messier 109', 'Barred Spiral', false, 60000000
     );
 
 INSERT INTO
     public.galaxy
 VALUES (
-        10, 'Maffei 1', 'Elliptical', false
+        3, 'Andromeda', 'Spiral', true, 2500000
     );
 
 INSERT INTO
     public.galaxy
 VALUES (
-        11, 'Small Magellanic Cloud', 'Irregular', true
+        4, 'Pinwheel', 'Spiral', false, 21000000
     );
 
 INSERT INTO
     public.galaxy
 VALUES (
-        12, 'NGC 5477', 'Irregular', false
+        5, 'Triangulum', 'Spiral', true, 2730000
     );
-
-INSERT INTO public.galaxy VALUES ( 13, 'IC 4710', 'Irregular', false );
 
 INSERT INTO
     public.galaxy
 VALUES (
-        14, 'NGC 4866', 'Lenticular', false
+        6, 'Sunflower', 'Spiral', false, 29300000
+    );
+
+INSERT INTO
+    public.galaxy
+VALUES (
+        7, 'Sombrero', 'Spiral', false, 29000000
+    );
+
+INSERT INTO
+    public.galaxy
+VALUES (
+        8, 'IC 1101', 'Elliptical', false, 1000000000
+    );
+
+INSERT INTO
+    public.galaxy
+VALUES (
+        9, 'Messier 59', 'Elliptical', false, 60000000
+    );
+
+INSERT INTO
+    public.galaxy
+VALUES (
+        10, 'Maffei 1', 'Elliptical', false, 10000000
+    );
+
+INSERT INTO
+    public.galaxy
+VALUES (
+        11, 'Small Magellanic Cloud', 'Irregular', true, 200000
+    );
+
+INSERT INTO
+    public.galaxy
+VALUES (
+        12, 'NGC 5477', 'Irregular', false, 20000000
+    );
+
+INSERT INTO
+    public.galaxy
+VALUES (
+        13, 'IC 4710', 'Irregular', false, 34000000
+    );
+
+INSERT INTO
+    public.galaxy
+VALUES (
+        14, 'NGC 4866', 'Lenticular', false, 100000000
     );
 
 --
@@ -316,7 +344,11 @@ INSERT INTO public.moon VALUES (2, 'Phobos', 1877, 4, 'Hall');
 
 INSERT INTO public.moon VALUES (3, 'Deimos', 1877, 4, 'Hall');
 
-INSERT INTO public.moon VALUES ( 4, 'Jupiter I', 1610, 5, 'Galileo' );
+INSERT INTO
+    public.moon
+VALUES (
+        4, 'Jupiter I', 1610, 5, 'Galileo'
+    );
 
 INSERT INTO public.moon VALUES ( 5, 'Europa', 1610, 5, 'Galileo' );
 
@@ -324,7 +356,11 @@ INSERT INTO public.moon VALUES ( 6, 'Callisto', 1610, 5, 'Galileo' );
 
 INSERT INTO public.moon VALUES ( 7, 'Mimas', 1789, 6, 'Herschel' );
 
-INSERT INTO public.moon VALUES ( 8, 'Enceladus', 1789, 6, 'Herschel' );
+INSERT INTO
+    public.moon
+VALUES (
+        8, 'Enceladus', 1789, 6, 'Herschel'
+    );
 
 INSERT INTO public.moon VALUES ( 9, 'Titan', 1655, 6, 'Huygens' );
 
