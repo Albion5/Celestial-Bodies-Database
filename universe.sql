@@ -86,7 +86,8 @@ ALTER SEQUENCE public.black_hole_black_hole_id_seq OWNED BY public.black_hole.bl
 CREATE TABLE public.galaxy (
     galaxy_id integer NOT NULL,
     name character varying(40),
-    shape character varying(30)
+    shape character varying(30),
+    is_visible boolean
 );
 
 
@@ -273,20 +274,20 @@ INSERT INTO public.black_hole VALUES (4, 'Messier 33', 5, 'Intermediate-mass');
 -- Data for Name: galaxy; Type: TABLE DATA; Schema: public; Owner: allie
 --
 
-INSERT INTO public.galaxy VALUES (1, 'Milky Way', 'Barred spiral');
-INSERT INTO public.galaxy VALUES (2, 'Messier 109', 'Barred Spiral');
-INSERT INTO public.galaxy VALUES (3, 'Andromeda', 'Spiral');
-INSERT INTO public.galaxy VALUES (4, 'Pinwheel', 'Spiral');
-INSERT INTO public.galaxy VALUES (5, 'Triangulum', 'Spiral');
-INSERT INTO public.galaxy VALUES (6, 'Sunflower', 'Spiral');
-INSERT INTO public.galaxy VALUES (7, 'Sombrero', 'Spiral');
-INSERT INTO public.galaxy VALUES (8, 'IC 1101', 'Elliptical');
-INSERT INTO public.galaxy VALUES (9, 'Messier 59', 'Elliptical');
-INSERT INTO public.galaxy VALUES (10, 'Maffei 1', 'Elliptical');
-INSERT INTO public.galaxy VALUES (11, 'Small Magellanic Cloud', 'Irregular');
-INSERT INTO public.galaxy VALUES (12, 'NGC 5477', 'Irregular');
-INSERT INTO public.galaxy VALUES (13, 'IC 4710', 'Irregular');
-INSERT INTO public.galaxy VALUES (14, 'NGC 4866', 'Lenticular');
+INSERT INTO public.galaxy VALUES (1, 'Milky Way', 'Barred spiral', true);
+INSERT INTO public.galaxy VALUES (2, 'Messier 109', 'Barred Spiral', false);
+INSERT INTO public.galaxy VALUES (3, 'Andromeda', 'Spiral', true);
+INSERT INTO public.galaxy VALUES (4, 'Pinwheel', 'Spiral', false);
+INSERT INTO public.galaxy VALUES (5, 'Triangulum', 'Spiral', true);
+INSERT INTO public.galaxy VALUES (6, 'Sunflower', 'Spiral', false);
+INSERT INTO public.galaxy VALUES (7, 'Sombrero', 'Spiral', false);
+INSERT INTO public.galaxy VALUES (8, 'IC 1101', 'Elliptical', false);
+INSERT INTO public.galaxy VALUES (9, 'Messier 59', 'Elliptical', false);
+INSERT INTO public.galaxy VALUES (10, 'Maffei 1', 'Elliptical', false);
+INSERT INTO public.galaxy VALUES (11, 'Small Magellanic Cloud', 'Irregular', true);
+INSERT INTO public.galaxy VALUES (12, 'NGC 5477', 'Irregular', false);
+INSERT INTO public.galaxy VALUES (13, 'IC 4710', 'Irregular', false);
+INSERT INTO public.galaxy VALUES (14, 'NGC 4866', 'Lenticular', false);
 
 
 --
