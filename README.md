@@ -18,7 +18,7 @@ Be sure to connect to your database with \c universe. Then, you should add table
 
 + [x] You should use the TEXT data type at least once
 
-+ [ ] You should use the BOOLEAN data type on at least two columns
++ [x] You should use the BOOLEAN data type on at least two columns
 
 + [x] Each "star" should have a foreign key that references one of the rows in galaxy
 
@@ -34,7 +34,7 @@ Be sure to connect to your database with \c universe. Then, you should add table
 
 + [x] The planet table should have at least 12 rows
 
-+ [ ] The moon table should have at least 20 rows
++ [x] The moon table should have at least 20 rows
 
 + [x] Each table should have at least three columns
 
@@ -42,7 +42,7 @@ Be sure to connect to your database with \c universe. Then, you should add table
 
 + [ ] At least two columns per table should not accept NULL values
 
-+ [ ] At least one column from each table should be required to be UNIQUE
++ [x] At least one column from each table should be required to be UNIQUE
 
 + [x] All columns named name should be of type VARCHAR
 

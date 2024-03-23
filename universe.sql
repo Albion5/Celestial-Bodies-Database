@@ -307,6 +307,13 @@ INSERT INTO public.moon VALUES (10, 'Ariel', 1851, 7);
 INSERT INTO public.moon VALUES (11, 'Miranda', 1948, 7);
 INSERT INTO public.moon VALUES (12, 'Triton', 1846, 8);
 INSERT INTO public.moon VALUES (13, 'Nereid', 1949, 8);
+INSERT INTO public.moon VALUES (14, 'Galatea', 1989, 8);
+INSERT INTO public.moon VALUES (15, 'Charon', 1978, 9);
+INSERT INTO public.moon VALUES (16, 'Nix', 2005, 9);
+INSERT INTO public.moon VALUES (17, 'Hydra', 2005, 9);
+INSERT INTO public.moon VALUES (18, 'Dysnomia', 2005, 10);
+INSERT INTO public.moon VALUES (19, 'Namaka', 2005, 11);
+INSERT INTO public.moon VALUES (20, 'Rhea', 1672, 6);
 
 
 --
@@ -321,11 +328,11 @@ INSERT INTO public.planet VALUES (5, 'Jupiter', 'It is the largest and most mass
 INSERT INTO public.planet VALUES (6, 'Saturn', 'It is the least dense planet in the solar system and it has the fastest winds of any other planet.', 10759.00, true, 1);
 INSERT INTO public.planet VALUES (7, 'Uranus', 'It is the coldest planet in the solar system', 84.00, true, 1);
 INSERT INTO public.planet VALUES (8, 'Neptune', 'It is the outermost planet in the solar system', 60182.00, true, 1);
-INSERT INTO public.planet VALUES (13, 'Makemake', 'It is the closest dwarf planet to the Sun. It lies on the main asteroid belt, between the planets Mars and Jupiter.', 1682.00, false, 1);
 INSERT INTO public.planet VALUES (12, 'Makemake', 'It lies beyond the orbit of Neptune and ts discovery gave rise to the dwarf planet group.', 112785.00, false, 1);
 INSERT INTO public.planet VALUES (11, 'Haumea', 'It is located beyond the orbit of Neptune and has a unique egg-like shape because of its fast rotation.', 103960.00, true, 1);
 INSERT INTO public.planet VALUES (10, 'Eris', 'It is the furthest dwarf planet from the Sun, and is also the most massive dwarf planet. It is located beyond the orbit of Neptune.', 203390.00, true, 1);
 INSERT INTO public.planet VALUES (9, 'Pluto', 'It is te largest dwarf planet and its orbit is chaotic and unpredictable.', 90582.00, true, 1);
+INSERT INTO public.planet VALUES (13, 'Ceres', 'It is the closest dwarf planet to the Sun. It lies on the main asteroid belt, between the planets Mars and Jupiter.', 1682.00, false, 1);
 
 
 --
@@ -358,7 +365,7 @@ SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 14, true);
 -- Name: moon_moon_id_seq; Type: SEQUENCE SET; Schema: public; Owner: allie
 --
 
-SELECT pg_catalog.setval('public.moon_moon_id_seq', 13, true);
+SELECT pg_catalog.setval('public.moon_moon_id_seq', 20, true);
 
 
 --
@@ -376,11 +383,27 @@ SELECT pg_catalog.setval('public.star_star_id_seq', 6, true);
 
 
 --
+-- Name: black_hole black_hole_name_key; Type: CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.black_hole
+    ADD CONSTRAINT black_hole_name_key UNIQUE (name);
+
+
+--
 -- Name: black_hole black_hole_pkey; Type: CONSTRAINT; Schema: public; Owner: allie
 --
 
 ALTER TABLE ONLY public.black_hole
     ADD CONSTRAINT black_hole_pkey PRIMARY KEY (black_hole_id);
+
+
+--
+-- Name: galaxy galaxy_name_key; Type: CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.galaxy
+    ADD CONSTRAINT galaxy_name_key UNIQUE (name);
 
 
 --
@@ -392,6 +415,14 @@ ALTER TABLE ONLY public.galaxy
 
 
 --
+-- Name: moon moon_name_key; Type: CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.moon
+    ADD CONSTRAINT moon_name_key UNIQUE (name);
+
+
+--
 -- Name: moon moon_pkey; Type: CONSTRAINT; Schema: public; Owner: allie
 --
 
@@ -400,11 +431,27 @@ ALTER TABLE ONLY public.moon
 
 
 --
+-- Name: planet planet_name_key; Type: CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.planet
+    ADD CONSTRAINT planet_name_key UNIQUE (name);
+
+
+--
 -- Name: planet planet_pkey; Type: CONSTRAINT; Schema: public; Owner: allie
 --
 
 ALTER TABLE ONLY public.planet
     ADD CONSTRAINT planet_pkey PRIMARY KEY (planet_id);
+
+
+--
+-- Name: star star_name_key; Type: CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.star
+    ADD CONSTRAINT star_name_key UNIQUE (name);
 
 
 --
