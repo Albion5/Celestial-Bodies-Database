@@ -79,10 +79,53 @@ ALTER SEQUENCE public.galaxy_galaxy_id_seq OWNED BY public.galaxy.galaxy_id;
 
 
 --
+-- Name: star; Type: TABLE; Schema: public; Owner: allie
+--
+
+CREATE TABLE public.star (
+    star_id integer NOT NULL,
+    name character varying(30),
+    radius_in_km integer,
+    galaxy_id integer
+);
+
+
+ALTER TABLE public.star OWNER TO allie;
+
+--
+-- Name: star_star_id_seq; Type: SEQUENCE; Schema: public; Owner: allie
+--
+
+CREATE SEQUENCE public.star_star_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.star_star_id_seq OWNER TO allie;
+
+--
+-- Name: star_star_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: allie
+--
+
+ALTER SEQUENCE public.star_star_id_seq OWNED BY public.star.star_id;
+
+
+--
 -- Name: galaxy galaxy_id; Type: DEFAULT; Schema: public; Owner: allie
 --
 
 ALTER TABLE ONLY public.galaxy ALTER COLUMN galaxy_id SET DEFAULT nextval('public.galaxy_galaxy_id_seq'::regclass);
+
+
+--
+-- Name: star star_id; Type: DEFAULT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.star_star_id_seq'::regclass);
 
 
 --
@@ -106,10 +149,29 @@ INSERT INTO public.galaxy VALUES (14, 'NGC 4866', 'Lenticular');
 
 
 --
+-- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: allie
+--
+
+INSERT INTO public.star VALUES (1, 'Sun', 696000, 1);
+INSERT INTO public.star VALUES (2, 'Betelgeuse', 822480000, 1);
+INSERT INTO public.star VALUES (3, 'Aldebaran', 30739200, 1);
+INSERT INTO public.star VALUES (4, 'Andromeda I', 6160000, 3);
+INSERT INTO public.star VALUES (5, 'M33-1', 7200000, 5);
+INSERT INTO public.star VALUES (6, 'SMC-1', 5000000, 11);
+
+
+--
 -- Name: galaxy_galaxy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: allie
 --
 
 SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 14, true);
+
+
+--
+-- Name: star_star_id_seq; Type: SEQUENCE SET; Schema: public; Owner: allie
+--
+
+SELECT pg_catalog.setval('public.star_star_id_seq', 6, true);
 
 
 --
@@ -118,6 +180,22 @@ SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 14, true);
 
 ALTER TABLE ONLY public.galaxy
     ADD CONSTRAINT galaxy_pkey PRIMARY KEY (galaxy_id);
+
+
+--
+-- Name: star star_pkey; Type: CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.star
+    ADD CONSTRAINT star_pkey PRIMARY KEY (star_id);
+
+
+--
+-- Name: star star_galaxy_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.star
+    ADD CONSTRAINT star_galaxy_id_fkey FOREIGN KEY (galaxy_id) REFERENCES public.galaxy(galaxy_id);
 
 
 --
