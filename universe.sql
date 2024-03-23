@@ -51,7 +51,7 @@ CREATE TABLE public.black_hole (
     black_hole_id integer NOT NULL,
     name character varying(30),
     galaxy_id integer,
-    type character varying(30)
+    type character varying(30) NOT NULL
 );
 
 
@@ -85,7 +85,7 @@ ALTER SEQUENCE public.black_hole_black_hole_id_seq OWNED BY public.black_hole.bl
 
 CREATE TABLE public.galaxy (
     galaxy_id integer NOT NULL,
-    name character varying(40),
+    name character varying(40) NOT NULL,
     shape character varying(30),
     is_visible boolean
 );
@@ -121,7 +121,7 @@ ALTER SEQUENCE public.galaxy_galaxy_id_seq OWNED BY public.galaxy.galaxy_id;
 
 CREATE TABLE public.moon (
     moon_id integer NOT NULL,
-    name character varying(30),
+    name character varying(30) NOT NULL,
     discovery_year integer,
     planet_id integer
 );
@@ -157,7 +157,7 @@ ALTER SEQUENCE public.moon_moon_id_seq OWNED BY public.moon.moon_id;
 
 CREATE TABLE public.planet (
     planet_id integer NOT NULL,
-    name character varying(30),
+    name character varying(30) NOT NULL,
     description text,
     year_in_earth_days numeric(10,2),
     has_moons boolean,
@@ -195,7 +195,7 @@ ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
 
 CREATE TABLE public.star (
     star_id integer NOT NULL,
-    name character varying(30),
+    name character varying(30) NOT NULL,
     radius_in_km integer,
     galaxy_id integer
 );
