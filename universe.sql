@@ -79,6 +79,42 @@ ALTER SEQUENCE public.galaxy_galaxy_id_seq OWNED BY public.galaxy.galaxy_id;
 
 
 --
+-- Name: moon; Type: TABLE; Schema: public; Owner: allie
+--
+
+CREATE TABLE public.moon (
+    moon_id integer NOT NULL,
+    name character varying(30),
+    discovery_year integer,
+    planet_id integer
+);
+
+
+ALTER TABLE public.moon OWNER TO allie;
+
+--
+-- Name: moon_moon_id_seq; Type: SEQUENCE; Schema: public; Owner: allie
+--
+
+CREATE SEQUENCE public.moon_moon_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.moon_moon_id_seq OWNER TO allie;
+
+--
+-- Name: moon_moon_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: allie
+--
+
+ALTER SEQUENCE public.moon_moon_id_seq OWNED BY public.moon.moon_id;
+
+
+--
 -- Name: planet; Type: TABLE; Schema: public; Owner: allie
 --
 
@@ -160,6 +196,13 @@ ALTER TABLE ONLY public.galaxy ALTER COLUMN galaxy_id SET DEFAULT nextval('publi
 
 
 --
+-- Name: moon moon_id; Type: DEFAULT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.moon ALTER COLUMN moon_id SET DEFAULT nextval('public.moon_moon_id_seq'::regclass);
+
+
+--
 -- Name: planet planet_id; Type: DEFAULT; Schema: public; Owner: allie
 --
 
@@ -191,6 +234,25 @@ INSERT INTO public.galaxy VALUES (11, 'Small Magellanic Cloud', 'Irregular');
 INSERT INTO public.galaxy VALUES (12, 'NGC 5477', 'Irregular');
 INSERT INTO public.galaxy VALUES (13, 'IC 4710', 'Irregular');
 INSERT INTO public.galaxy VALUES (14, 'NGC 4866', 'Lenticular');
+
+
+--
+-- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: allie
+--
+
+INSERT INTO public.moon VALUES (1, 'Moon', NULL, 3);
+INSERT INTO public.moon VALUES (2, 'Phobos', 1877, 4);
+INSERT INTO public.moon VALUES (3, 'Deimos', 1877, 4);
+INSERT INTO public.moon VALUES (4, 'Jupiter I', 1610, 5);
+INSERT INTO public.moon VALUES (5, 'Europa', 1610, 5);
+INSERT INTO public.moon VALUES (6, 'Callisto', 1610, 5);
+INSERT INTO public.moon VALUES (7, 'Mimas', 1789, 6);
+INSERT INTO public.moon VALUES (8, 'Enceladus', 1789, 6);
+INSERT INTO public.moon VALUES (9, 'Titan', 1655, 6);
+INSERT INTO public.moon VALUES (10, 'Ariel', 1851, 7);
+INSERT INTO public.moon VALUES (11, 'Miranda', 1948, 7);
+INSERT INTO public.moon VALUES (12, 'Triton', 1846, 8);
+INSERT INTO public.moon VALUES (13, 'Nereid', 1949, 8);
 
 
 --
@@ -232,6 +294,13 @@ SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 14, true);
 
 
 --
+-- Name: moon_moon_id_seq; Type: SEQUENCE SET; Schema: public; Owner: allie
+--
+
+SELECT pg_catalog.setval('public.moon_moon_id_seq', 13, true);
+
+
+--
 -- Name: planet_planet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: allie
 --
 
@@ -254,6 +323,14 @@ ALTER TABLE ONLY public.galaxy
 
 
 --
+-- Name: moon moon_pkey; Type: CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.moon
+    ADD CONSTRAINT moon_pkey PRIMARY KEY (moon_id);
+
+
+--
 -- Name: planet planet_pkey; Type: CONSTRAINT; Schema: public; Owner: allie
 --
 
@@ -267,6 +344,22 @@ ALTER TABLE ONLY public.planet
 
 ALTER TABLE ONLY public.star
     ADD CONSTRAINT star_pkey PRIMARY KEY (star_id);
+
+
+--
+-- Name: moon moon_planet_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.moon
+    ADD CONSTRAINT moon_planet_id_fkey FOREIGN KEY (planet_id) REFERENCES public.planet(planet_id);
+
+
+--
+-- Name: planet planet_star_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: allie
+--
+
+ALTER TABLE ONLY public.planet
+    ADD CONSTRAINT planet_star_id_fkey FOREIGN KEY (star_id) REFERENCES public.star(star_id);
 
 
 --
